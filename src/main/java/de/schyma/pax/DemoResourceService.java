@@ -11,7 +11,7 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
   scope = ServiceScope.PROTOTYPE,
   property = {
     HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PREFIX + "=/web",
-    HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PATTERN + "=/resources/*",
+    HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PATTERN + "=/resources",
     DemoServletContext.CONTEXT_SERVICE_SELECTOR
   }
 )
