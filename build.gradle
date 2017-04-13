@@ -1,0 +1,54 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'org.jayware.osgi-ds'
+apply plugin: 'biz.aQute.bnd.builder'
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.3.0'
+    classpath 'org.jayware:gradle-osgi-ds:0.5.4'
+  }
+}
+
+group 'de.schyma.pax.web'
+version '1.0-SNAPSHOT'
+description 'Servlet Context Resource Registration Demo'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compileOnly 'org.osgi:osgi.core:6.0.0'
+  compileOnly 'org.osgi:osgi.cmpn:6.0.0'
+  compileOnly 'org.osgi:osgi.annotation:6.0.1'
+  compileOnly 'org.osgi:osgi.enterprise:6.0.0'
+  compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
+  compileOnly 'org.slf4j:slf4j-api:1.7.25'
+}
+
+jar {
+  manifest {
+    attributes(
+      'Bundle-Vendor': 'Peter Schyma',
+      'Bundle-Name': "${project.description}",
+      'Import-Package': 'org.slf4j;version="[1.7,2)",*',
+      'Export-Package': 'web',
+      '-includeresource': 'src/main/resources'
+    )
+  }
+}
+
+publishing {
+  publications {
+    bundle(MavenPublication) {
+      from components.java
+    }
+  }
+}
