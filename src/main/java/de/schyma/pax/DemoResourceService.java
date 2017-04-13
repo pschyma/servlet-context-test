@@ -12,7 +12,7 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
   property = {
     HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PREFIX + "=/web",
     HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PATTERN + "=/resources/*",
-//    DemoServletContext.CONTEXT_SERVICE_SELECTOR
+    DemoServletContext.CONTEXT_SERVICE_SELECTOR
   }
 )
 public class DemoResourceService {
